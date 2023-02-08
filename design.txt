@@ -1,0 +1,15 @@
+Design Description
+CS5001 Sliding Puzzle Game
+Chuhan Ren
+
+
+For this project, I created 4 python files:
+1. puzzle_game contains main function to run the game
+2. image_dic module with ImageDic class to extract puzzle information
+3. puzzle module with class Tiles for its behaviors, including a few major methods: create tiles, swap, justify win/lose and update leaders txt file if win
+4. leaderboard module to write user's name and final moves in leaders.txt and rank leaders in leader_ranking.txt
+
+In the puzzle play file with main function, at first I store user input of player name and max moves, and set the current puzzle with default value Mario. After that I wrote several functions, including: framework(boards, buttons), update play moves in the left bottom, function to load new puzzle which returns the path for the .puz file from the user input(in this part, I use global variable current_puzzle, so I change the current puzzle to the one from user input), function to update leaderboard which write lines from the txt file with right ranking, and function to quit the game. In click_button function I called functions for three buttons and functions that runs in the game board, and I will mouse click these events in the main function. In the main function, except for drawing boards and create buttons, I called function to place tiles, show leaderboard, and bind functions to mouse-click event.
+
+
+Following is my logic for swap tiles: once I create turtle objects for each tile, put those objects into a list, detect the object with blank image by its name, and the tile when clicked by its location. I used a function to check adjacency according to these two's distance, return True if adjacent, If adjacent function return True, let those two tiles go to each other's location and add moves. Logic for win/lose: find the positions for turtle objects in the list I created at first, created a list of the positions when they were in right order. Also, I updated turtle object's location list each time it did the swap. While the two lists are equal, and moves less than the max move the user typed in, the user wins, if moves exceed max moves and those two lists are not equal, the user loses.
